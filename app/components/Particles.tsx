@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect, useState } from "react"
 
 interface ParticlesProps {
@@ -12,7 +11,6 @@ const configs = {
   strong: { dots: 90, orbs: 10, dotOpacity: 0.25, orbOpacity: 0.09 },
 }
 
-// Gerado fora do componente — persiste durante toda a sessão
 const generateDots = (config: typeof configs.medium) =>
   Array.from({ length: config.dots }, () => ({
     opacity: Math.random() * config.dotOpacity + 0.03,
@@ -68,7 +66,7 @@ export default function Particles({ intensity = "medium" }: ParticlesProps) {
           50% { transform: translate(30px, -30px); }
         }
       `}</style>
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
         {dots.map((p, i) => (
           <div key={`dot-${i}`} className="absolute rounded-full"
             style={{
