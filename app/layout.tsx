@@ -21,10 +21,8 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="dark">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} bg-black`}>
-        <div className="relative min-h-screen">
-          <Particles intensity="medium" />
-          <Suspense fallback={null}>{children}</Suspense>
-        </div>
+        <Particles intensity="medium" />
+        <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
       </body>
     </html>
