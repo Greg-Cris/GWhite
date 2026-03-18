@@ -91,9 +91,9 @@ export default function PlansPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-[#050f07] to-black text-white relative overflow-hidden">
+    <div className="min-h-screen text-white relative" style={{ zIndex: 1 }}>
 
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         @keyframes glow-pulse {
           0%, 100% { box-shadow: 0 0 20px rgba(16,185,129,0.3), 0 0 40px rgba(16,185,129,0.1); }
           50% { box-shadow: 0 0 40px rgba(16,185,129,0.5), 0 0 80px rgba(16,185,129,0.2); }
@@ -102,7 +102,7 @@ export default function PlansPage() {
           0%, 100% { border-color: rgba(34,197,94,0.4); }
           50% { border-color: rgba(34,197,94,0.9); }
         }
-      `}</style>
+      `}} />
 
       <div className="absolute inset-0 bg-gradient-to-r from-green-950/10 via-transparent to-green-950/10 pointer-events-none" />
 
