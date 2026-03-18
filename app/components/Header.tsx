@@ -71,7 +71,7 @@ export default function Header() {
           alt="Wht-Store"
           style={{
             width: '120px',
-            height: '120px',
+            height: 'auto',
             position: 'absolute',
             top: '-10px',
             left: '0',
