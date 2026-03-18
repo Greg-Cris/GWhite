@@ -6,7 +6,6 @@ import Link from "next/link"
 import { useMemo } from "react"
 import Header from "@/app/components/Header"
 import Footer from "@/app/components/Footer"
-import Particles from "@/app/components/Particles"
 
 const generatePositions = (count: number, seed: number) => {
   const positions = []
@@ -72,8 +71,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-[#050f07] to-black text-white relative overflow-hidden">
-
-      <Particles intensity="strong" />
 
       <style jsx>{`
         @keyframes natural-blink {
