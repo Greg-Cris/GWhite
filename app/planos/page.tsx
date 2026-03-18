@@ -1,18 +1,14 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import Header from "@/app/components/Header"
 import Footer from "@/app/components/Footer"
+import Particles from "@/app/components/Particles"
 
 export default function PlansPage() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
-  const [isMounted, setIsMounted] = useState(false)
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
 
   const plans = [
     {
@@ -98,46 +94,9 @@ export default function PlansPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-[#050f07] to-black text-white relative overflow-hidden">
 
-      {/* Partículas */}
-      {isMounted && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(80)].map((_, i) => (
-            <div key={`w-${i}`} className="absolute rounded-full will-change-transform"
-              style={{
-                backgroundColor: `rgba(255,255,255,${Math.random()*0.3+0.05})`,
-                width: `${Math.random()*4+1}px`, height: `${Math.random()*4+1}px`,
-                top: `${Math.random()*100}%`, left: `${Math.random()*100}%`,
-                animation: `float-up ${Math.random()*12+8}s infinite linear`,
-                animationDelay: `${Math.random()*8}s`,
-              }}
-            />
-          ))}
-          {[...Array(20)].map((_, i) => (
-            <div key={`orb-${i}`} className="absolute rounded-full blur-lg will-change-transform"
-              style={{
-                backgroundColor: `rgba(34,197,94,${Math.random()*0.15+0.05})`,
-                width: `${Math.random()*30+15}px`, height: `${Math.random()*30+15}px`,
-                top: `${Math.random()*100}%`, left: `${Math.random()*100}%`,
-                animation: `float-diagonal ${Math.random()*18+15}s infinite ease-in-out`,
-                animationDelay: `${Math.random()*6}s`,
-              }}
-            />
-          ))}
-        </div>
-      )}
+      <Particles intensity="medium" />
 
       <style jsx>{`
-        @keyframes float-up {
-          0% { transform: translateY(0) translateX(0); opacity: 0.3; }
-          50% { opacity: 1; }
-          100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
-        }
-        @keyframes float-diagonal {
-          0%, 100% { transform: translate(0, 0); opacity: 0.5; }
-          25% { transform: translate(30px, -30px); opacity: 0.8; }
-          50% { transform: translate(60px, 0); opacity: 0.6; }
-          75% { transform: translate(30px, 30px); opacity: 0.7; }
-        }
         @keyframes glow-pulse {
           0%, 100% { box-shadow: 0 0 20px rgba(16,185,129,0.3), 0 0 40px rgba(16,185,129,0.1); }
           50% { box-shadow: 0 0 40px rgba(16,185,129,0.5), 0 0 80px rgba(16,185,129,0.2); }
