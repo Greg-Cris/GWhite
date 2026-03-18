@@ -9,7 +9,6 @@ export default function DiscordPage() {
   const [botCount, setBotCount] = useState(0)
   const [uptimeCount, setUptimeCount] = useState(0)
   const [notifications, setNotifications] = useState([])
-  const [isMounted, setIsMounted] = useState(false)
   const [feedbacks, setFeedbacks] = useState([
     { id: 1, name: "João Silva", avatar: "🎮", rating: 5, comment: "Melhor bot que já usei! Suporte excepcional e funcionalidades incríveis.", date: "Há 2 dias" },
     { id: 2, name: "Maria Santos", avatar: "👑", rating: 5, comment: "Sistema de vendas automatizado funcionou perfeitamente. Recomendo!", date: "Há 1 semana" },
@@ -22,7 +21,6 @@ export default function DiscordPage() {
   const names = ["Lucas Almeida", "Carla Ferreira", "Rafael Santos", "Beatriz Lima", "Gabriel Costa", "Juliana Souza", "Bruno Oliveira", "Camila Rodrigues", "Felipe Martins", "Amanda Silva", "Thiago Pereira", "Larissa Gomes"]
 
   useEffect(() => {
-    setIsMounted(true)
     const animateCounter = (target, setter, duration = 2000) => {
       let start = 0
       const increment = target / (duration / 16)
@@ -73,29 +71,14 @@ export default function DiscordPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-[#030a04] to-black text-white relative overflow-hidden">
+    <div className="min-h-screen text-white relative" style={{ zIndex: 1 }}>
 
-      {isMounted && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(40)].map((_, i) => (
-            <div key={`w-${i}`} className="absolute rounded-full"
-              style={{ backgroundColor: `rgba(255,255,255,${Math.random()*0.07+0.01})`, width: `${Math.random()*2+1}px`, height: `${Math.random()*2+1}px`, top: `${Math.random()*100}%`, left: `${Math.random()*100}%`, animation: `float-up ${Math.random()*15+10}s infinite linear`, animationDelay: `${Math.random()*10}s` }} />
-          ))}
-          {[...Array(5)].map((_, i) => (
-            <div key={`orb-${i}`} className="absolute rounded-full blur-3xl"
-              style={{ backgroundColor: `rgba(34,197,94,0.03)`, width: `${Math.random()*300+150}px`, height: `${Math.random()*300+150}px`, top: `${Math.random()*100}%`, left: `${Math.random()*100}%`, animation: `float-diagonal ${Math.random()*30+20}s infinite ease-in-out`, animationDelay: `${Math.random()*10}s` }} />
-          ))}
-        </div>
-      )}
-
-      <style jsx>{`
-        @keyframes float-up { 0% { transform: translateY(0); opacity: 0; } 10% { opacity: 0.5; } 90% { opacity: 0.2; } 100% { transform: translateY(-100vh); opacity: 0; } }
-        @keyframes float-diagonal { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(30px,-30px); } }
+      <style dangerouslySetInnerHTML={{ __html: `
         @keyframes slide-in { from { transform: translateX(400px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
         @keyframes discord-pulse { 0%, 100% { box-shadow: 0 0 20px rgba(88,101,242,0.4); } 50% { box-shadow: 0 0 40px rgba(88,101,242,0.7); } }
         .card-glass { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
         .card-glass:hover { background: rgba(255,255,255,0.04); border-color: rgba(34,197,94,0.18); transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(34,197,94,0.05); }
-      `}</style>
+      `}} />
 
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(34,197,94,0.03) 0%, transparent 60%)' }} />
 
@@ -239,7 +222,6 @@ export default function DiscordPage() {
             ))}
           </div>
 
-          {/* Form de feedback */}
           <div className="card-glass rounded-2xl p-8">
             <h3 className="text-xl font-bold mb-6 text-center text-white">Deixe Seu Feedback</h3>
             {!showFeedbackForm ? (
