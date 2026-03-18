@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 
 interface UserData {
@@ -65,44 +66,39 @@ export default function Header() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-3 lg:px-12 z-50 transition-all duration-300 ${isScrolled ? "bg-black/90 backdrop-blur-md shadow-[0_4px_20px_rgba(0,80,0,0.4)]" : "bg-transparent"}`}>
-      <Link href="/" className="flex items-center gap-3 relative">
-        <img
-          src="/logo.gif"
-          alt="Wht-Store"
-          style={{
-            width: '120px',
-            height: 'auto',
-            position: 'absolute',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            left: '0',
-          }}
+      <Link href="/" className="flex items-center gap-3">
+        <Image 
+          src="/ChatGPT_Image_16_de_mar._de_2026_12_33_39.png" 
+          alt="Wht-Store" 
+          width={100} 
+          height={64} 
+          className="h-16 w-auto"
+          priority
         />
-        <div style={{ width: '120px' }} />
       </Link>
 
       <div className="flex items-center gap-4">
         <nav className="hidden md:flex items-center space-x-2">
-          <Link
-            href="/"
+          <Link 
+            href="/" 
             className={`${isActive('/') ? 'text-green-400 bg-green-900/20' : 'text-gray-300 hover:text-green-400 hover:bg-green-900/20'} transition-all duration-200 px-4 py-2 rounded-lg`}
           >
             Início
           </Link>
-          <Link
-            href="/planos"
+          <Link 
+            href="/planos" 
             className={`${isActive('/planos') ? 'text-green-400 bg-green-900/20' : 'text-gray-300 hover:text-green-400 hover:bg-green-900/20'} transition-all duration-200 px-4 py-2 rounded-lg`}
           >
             Planos
           </Link>
-          <Link
-            href="/adicionais"
+          <Link 
+            href="/adicionais" 
             className={`${isActive('/adicionais') ? 'text-green-400 bg-green-900/20' : 'text-gray-300 hover:text-green-400 hover:bg-green-900/20'} transition-all duration-200 px-4 py-2 rounded-lg`}
           >
             Adicionais
           </Link>
-          <Link
-            href="/tutoriais"
+          <Link 
+            href="/tutoriais" 
             className={`${isActive('/tutoriais') ? 'text-green-400 bg-green-900/20' : 'text-gray-300 hover:text-green-400 hover:bg-green-900/20'} transition-all duration-200 px-4 py-2 rounded-lg`}
           >
             Tutoriais
@@ -148,8 +144,8 @@ export default function Header() {
                 </div>
 
                 <div className="py-2">
-                  <Link
-                    href="/dashboard"
+                  <Link 
+                    href="/dashboard" 
                     className="w-full px-4 py-2 text-left hover:bg-green-900/20 transition-colors flex items-center gap-3 text-gray-300 hover:text-green-400"
                     onClick={() => setShowDropdown(false)}
                   >
