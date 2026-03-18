@@ -4,7 +4,6 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import Header from "@/app/components/Header"
 import Footer from "@/app/components/Footer"
-import Particles from "@/app/components/Particles"
 
 export default function TutorialsPage() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -41,8 +40,6 @@ export default function TutorialsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-[#030a04] to-black text-white relative overflow-hidden">
 
-      <Particles intensity="medium" />
-
       <style jsx>{`
         .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .card-hover:hover { transform: translateY(-8px); border-color: rgba(34,197,94,0.2) !important; box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 40px rgba(34,197,94,0.05); }
@@ -51,7 +48,6 @@ export default function TutorialsPage() {
       <Header />
 
       <main className="px-6 py-20 pt-32 relative z-10 max-w-7xl mx-auto">
-
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-2 mb-5 px-5 py-2 rounded-full text-xs font-semibold tracking-widest uppercase"
             style={{ background: 'rgba(34,197,94,0.05)', border: '1px solid rgba(34,197,94,0.1)', color: 'rgba(134,239,172,0.5)' }}>
@@ -152,7 +148,6 @@ export default function TutorialsPage() {
             </button>
           </div>
         </div>
-
       </main>
       <Footer />
     </div>
