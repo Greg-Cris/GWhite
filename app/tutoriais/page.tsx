@@ -1,16 +1,14 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import Header from "@/app/components/Header"
 import Footer from "@/app/components/Footer"
+import Particles from "@/app/components/Particles"
 
 export default function TutorialsPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [activeFilter, setActiveFilter] = useState("Todos")
-  const [isMounted, setIsMounted] = useState(false)
-
-  useEffect(() => { setIsMounted(true) }, [])
 
   const filters = [
     { name: "Todos", count: 25 },
@@ -43,52 +41,11 @@ export default function TutorialsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-[#030a04] to-black text-white relative overflow-hidden">
 
-      {isMounted && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(40)].map((_, i) => (
-            <div key={`w-${i}`} className="absolute rounded-full"
-              style={{
-                backgroundColor: `rgba(255,255,255,${Math.random()*0.08+0.02})`,
-                width: `${Math.random()*2+1}px`, height: `${Math.random()*2+1}px`,
-                top: `${Math.random()*100}%`, left: `${Math.random()*100}%`,
-                animation: `float-up ${Math.random()*15+10}s infinite linear`,
-                animationDelay: `${Math.random()*10}s`,
-              }}
-            />
-          ))}
-          {[...Array(5)].map((_, i) => (
-            <div key={`orb-${i}`} className="absolute rounded-full blur-3xl"
-              style={{
-                backgroundColor: `rgba(34,197,94,0.04)`,
-                width: `${Math.random()*300+150}px`, height: `${Math.random()*300+150}px`,
-                top: `${Math.random()*100}%`, left: `${Math.random()*100}%`,
-                animation: `float-diagonal ${Math.random()*30+20}s infinite ease-in-out`,
-                animationDelay: `${Math.random()*10}s`,
-              }}
-            />
-          ))}
-        </div>
-      )}
+      <Particles intensity="medium" />
 
       <style jsx>{`
-        @keyframes float-up {
-          0% { transform: translateY(0); opacity: 0; }
-          10% { opacity: 0.6; }
-          90% { opacity: 0.3; }
-          100% { transform: translateY(-100vh); opacity: 0; }
-        }
-        @keyframes float-diagonal {
-          0%, 100% { transform: translate(0, 0); }
-          50% { transform: translate(30px, -30px); }
-        }
-        .card-hover {
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card-hover:hover {
-          transform: translateY(-8px);
-          border-color: rgba(34,197,94,0.2) !important;
-          box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 40px rgba(34,197,94,0.05);
-        }
+        .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-8px); border-color: rgba(34,197,94,0.2) !important; box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 40px rgba(34,197,94,0.05); }
       `}</style>
 
       <Header />
@@ -111,14 +68,10 @@ export default function TutorialsPage() {
             <svg className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4" fill="none" stroke="rgba(255,255,255,0.15)" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
-            <input
-              type="text"
-              placeholder="Buscar tutoriais..."
-              value={searchTerm}
+            <input type="text" placeholder="Buscar tutoriais..." value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full rounded-xl px-12 py-3.5 text-sm focus:outline-none transition-all"
-              style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.8)' }}
-            />
+              style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.8)' }} />
           </div>
         </div>
 
@@ -140,16 +93,13 @@ export default function TutorialsPage() {
           {filteredTutorials.map((tutorial) => (
             <div key={tutorial.id} className="card-hover rounded-2xl overflow-hidden cursor-pointer group"
               style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}>
-
               <div className="relative aspect-video flex items-center justify-center overflow-hidden"
                 style={{ background: 'linear-gradient(160deg, #040d05 0%, #000 100%)' }}>
                 <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(34,197,94,0.05) 0%, transparent 70%)' }} />
-                <div className="relative z-10 flex flex-col items-center gap-3">
+                <div className="relative z-10">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
                     style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.15)' }}>
-                    <svg className="w-5 h-5 ml-0.5" fill="rgba(134,239,172,0.6)" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
+                    <svg className="w-5 h-5 ml-0.5" fill="rgba(134,239,172,0.6)" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                   </div>
                 </div>
                 <div className="absolute bottom-3 right-3 px-2 py-1 rounded text-xs font-mono"
@@ -157,7 +107,6 @@ export default function TutorialsPage() {
                   {tutorial.duration}
                 </div>
               </div>
-
               <div className="p-5">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs px-2.5 py-1 rounded-full"
