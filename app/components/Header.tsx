@@ -70,7 +70,7 @@ export default function Header() {
           src="/logo.gif"
           alt="Wht-Store"
           className="h-16 w-auto"
-          style={{ marginTop: '20px', marginBottom: '-20px' }}
+          style={{ marginTop: '40px', marginBottom: '-40px' }}
         />
       </Link>
 
