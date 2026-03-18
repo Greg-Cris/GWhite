@@ -110,7 +110,7 @@ export default function HomePage() {
               <div className="absolute -top-12 left-0 transform -translate-x-2 -rotate-12 scale-x-[-1]">
                 <span className="text-2xl" style={{ animation: "natural-blink 4s infinite ease-in-out" }}>🐺</span>
               </div>
-              <img src="/wht-store-logo.png" alt="Wht-Store" className="h-64 lg:h-80 w-auto mx-auto" />
+              <img src="/wht-store-logo.png" alt="Wht-Store" className="h-32 lg:h-40 w-auto mx-auto" />
             </div>
           </h1>
           <h2 className="text-3xl lg:text-4xl font-bold mb-8 text-green-100/80">
