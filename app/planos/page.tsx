@@ -5,7 +5,6 @@ import { useState } from "react"
 import Link from "next/link"
 import Header from "@/app/components/Header"
 import Footer from "@/app/components/Footer"
-import Particles from "@/app/components/Particles"
 
 export default function PlansPage() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
@@ -94,8 +93,6 @@ export default function PlansPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-[#050f07] to-black text-white relative overflow-hidden">
 
-      <Particles intensity="medium" />
-
       <style jsx>{`
         @keyframes glow-pulse {
           0%, 100% { box-shadow: 0 0 20px rgba(16,185,129,0.3), 0 0 40px rgba(16,185,129,0.1); }
@@ -113,8 +110,6 @@ export default function PlansPage() {
 
       <main className="relative z-10 px-6 py-20 pt-32 pb-32">
         <div className="max-w-7xl mx-auto">
-
-          {/* Título */}
           <div className="text-center mb-16">
             <div className="inline-block mb-4 px-6 py-2 bg-green-900/30 border border-green-600/40 rounded-full text-green-400 text-sm font-semibold">
               ✨ Planos Flexíveis e Acessíveis
@@ -128,7 +123,6 @@ export default function PlansPage() {
             </p>
           </div>
 
-          {/* Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
             {plans.map((plan, index) => (
               <div
@@ -154,14 +148,12 @@ export default function PlansPage() {
                     : 'none'
                 }}
               >
-                {/* Ícone */}
                 <div className="absolute -top-5 left-1/2 transform -translate-x-1/2">
                   <div className={`text-3xl bg-gradient-to-br ${plan.gradient} rounded-full p-2.5 shadow-lg transition-transform duration-300 ${hoveredCard === index ? 'scale-110 rotate-6' : ''}`}>
                     {plan.icon}
                   </div>
                 </div>
 
-                {/* Badge */}
                 <div className="flex items-center justify-between mb-4 mt-6 flex-wrap gap-2">
                   <span className={`${plan.badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full`}>
                     {plan.badge}
@@ -176,7 +168,6 @@ export default function PlansPage() {
                 <h3 className="text-2xl font-bold mb-2 text-white">{plan.name}</h3>
                 <p className="text-green-200/50 text-xs mb-4 min-h-[40px] leading-relaxed">{plan.description}</p>
 
-                {/* Preço */}
                 <div className="mb-6">
                   {plan.originalPrice && (
                     <div className="text-center mb-1">
@@ -200,10 +191,8 @@ export default function PlansPage() {
                   )}
                 </div>
 
-                {/* Divisor */}
                 <div className="w-full h-px bg-green-900/40 mb-5" />
 
-                {/* Features */}
                 <ul className="space-y-2.5 mb-6">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start">
@@ -231,7 +220,6 @@ export default function PlansPage() {
             ))}
           </div>
 
-          {/* CTA Adicionais */}
           <div className="max-w-5xl mx-auto mb-16">
             <div className="bg-[#050f07] border border-green-800/40 rounded-3xl p-10 text-center relative overflow-hidden"
               style={{boxShadow: '0 0 60px rgba(34,197,94,0.05)'}}>
@@ -253,7 +241,6 @@ export default function PlansPage() {
             </div>
           </div>
 
-          {/* Comparativo */}
           <div className="max-w-4xl mx-auto mb-16">
             <h2 className="text-3xl font-bold text-center mb-8 text-white">Compare os planos</h2>
             <div className="bg-[#050f07] border border-green-900/30 rounded-2xl p-8">
@@ -274,7 +261,6 @@ export default function PlansPage() {
             </div>
           </div>
 
-          {/* Features Adicionais */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {[
               { icon: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z", title: "Pagamento Seguro", desc: "Proteção total em todas as transações", color: "from-green-700 to-green-900" },
@@ -295,7 +281,6 @@ export default function PlansPage() {
               </div>
             ))}
           </div>
-
         </div>
       </main>
 
