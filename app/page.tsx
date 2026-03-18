@@ -281,9 +281,9 @@ export default function HomePage() {
                 </span>
               </div>
               <img 
-                src="/wht-store-title.png" 
+                src="/wht-store-logo.png" 
                 alt="Wht-Store" 
-                className="h-64 lg:h-80 w-auto mx-auto"
+                className="h-32 lg:h-40 w-auto mx-auto"
               />
             </div>
           </h1>
