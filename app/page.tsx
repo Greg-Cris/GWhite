@@ -283,7 +283,7 @@ export default function HomePage() {
               <img 
                 src="/wht-store-title.png" 
                 alt="Wht-Store" 
-                className="h-32 lg:h-40 w-auto mx-auto"
+                className="h-48 lg:h-64 w-auto mx-auto"
               />
             </div>
           </h1>
