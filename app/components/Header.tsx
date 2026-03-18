@@ -69,7 +69,7 @@ export default function Header() {
         <img
           src="/logo.gif"
           alt="Wht-Store"
-          className="h-28 w-auto"
+          className="h-16 w-auto"
         />
       </Link>
 
