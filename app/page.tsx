@@ -246,8 +246,18 @@ export default function HomePage() {
         .carousel-container:hover .carousel-track { animation-play-state: paused; }
         .carousel-track { animation: scroll 20s linear infinite; display: flex; }
 
-        .neon-text {
-          text-shadow: 0 0 20px rgba(74, 222, 128, 0.5), 0 0 40px rgba(74, 222, 128, 0.3);
+        .neon-title {
+          font-family: 'Zeyada', cursive;
+          color: #1a7a1a;
+          font-style: italic;
+          font-size: 5rem;
+          text-shadow: 
+            0 0 5px #00ff41,
+            0 0 10px #00ff41,
+            0 0 20px #00ff41,
+            0 0 40px #00c030,
+            0 0 80px #009020;
+          letter-spacing: 2px;
         }
       `}</style>
 
@@ -267,7 +277,7 @@ export default function HomePage() {
                   🐺
                 </span>
               </div>
-              <span className="text-green-400 font-bold tracking-wide neon-text">Wht-Store</span>
+              <span className="neon-title">Wht-Store</span>
             </div>
           </h1>
           <h2 className="text-3xl lg:text-4xl font-bold mb-8 text-green-100/80">
