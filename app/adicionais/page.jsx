@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import Header from "@/app/components/Header"
 import Footer from "@/app/components/Footer"
@@ -8,9 +8,6 @@ import Footer from "@/app/components/Footer"
 export default function AddonsPage() {
   const [selectedAddons, setSelectedAddons] = useState([])
   const [hoveredAddon, setHoveredAddon] = useState(null)
-  const [isMounted, setIsMounted] = useState(false)
-
-  useEffect(() => { setIsMounted(true) }, [])
 
   const toggleAddon = (id) => {
     setSelectedAddons(prev =>
@@ -40,46 +37,9 @@ export default function AddonsPage() {
   const totalPrice = selectedAddons.length * 10
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-[#030a04] to-black text-white relative overflow-hidden">
+    <div className="min-h-screen text-white relative" style={{ zIndex: 1 }}>
 
-      {isMounted && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(40)].map((_, i) => (
-            <div key={`w-${i}`} className="absolute rounded-full"
-              style={{
-                backgroundColor: `rgba(255,255,255,${Math.random()*0.07+0.01})`,
-                width: `${Math.random()*2+1}px`, height: `${Math.random()*2+1}px`,
-                top: `${Math.random()*100}%`, left: `${Math.random()*100}%`,
-                animation: `float-up ${Math.random()*15+10}s infinite linear`,
-                animationDelay: `${Math.random()*10}s`,
-              }}
-            />
-          ))}
-          {[...Array(5)].map((_, i) => (
-            <div key={`orb-${i}`} className="absolute rounded-full blur-3xl"
-              style={{
-                backgroundColor: `rgba(34,197,94,0.04)`,
-                width: `${Math.random()*250+100}px`, height: `${Math.random()*250+100}px`,
-                top: `${Math.random()*100}%`, left: `${Math.random()*100}%`,
-                animation: `float-diagonal ${Math.random()*30+20}s infinite ease-in-out`,
-                animationDelay: `${Math.random()*10}s`,
-              }}
-            />
-          ))}
-        </div>
-      )}
-
-      <style jsx>{`
-        @keyframes float-up {
-          0% { transform: translateY(0); opacity: 0; }
-          10% { opacity: 0.5; }
-          90% { opacity: 0.2; }
-          100% { transform: translateY(-100vh); opacity: 0; }
-        }
-        @keyframes float-diagonal {
-          0%, 100% { transform: translate(0, 0); }
-          50% { transform: translate(30px, -30px); }
-        }
+      <style dangerouslySetInnerHTML={{ __html: `
         .addon-card {
           background: rgba(255,255,255,0.02);
           border: 1px solid rgba(255,255,255,0.05);
@@ -98,14 +58,13 @@ export default function AddonsPage() {
           border-color: rgba(34,197,94,0.35);
           box-shadow: 0 0 40px rgba(34,197,94,0.08), inset 0 0 20px rgba(34,197,94,0.03);
         }
-      `}</style>
+      `}} />
 
       <Header />
 
       <main className="relative z-10 px-6 py-20 pt-32 pb-40">
         <div className="max-w-7xl mx-auto">
 
-          {/* Título */}
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 mb-5 px-5 py-2 rounded-full text-xs font-semibold tracking-widest uppercase"
               style={{ background: 'rgba(34,197,94,0.05)', border: '1px solid rgba(34,197,94,0.1)', color: 'rgba(134,239,172,0.5)' }}>
@@ -122,7 +81,6 @@ export default function AddonsPage() {
             </p>
           </div>
 
-          {/* Info pills */}
           <div className="flex items-center justify-center gap-3 flex-wrap mb-14">
             {["Pagamento único", "Sem alterar mensalidade", "Ativação imediata"].map((text, i) => (
               <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full text-xs"
@@ -133,7 +91,6 @@ export default function AddonsPage() {
             ))}
           </div>
 
-          {/* Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-12">
             {addons.map((addon) => {
               const isSelected = selectedAddons.includes(addon.id)
@@ -145,7 +102,6 @@ export default function AddonsPage() {
                   onMouseLeave={() => setHoveredAddon(null)}
                   className={`addon-card rounded-2xl p-5 ${isSelected ? 'selected' : ''}`}
                 >
-                  {/* Header do card */}
                   <div className="flex items-start justify-between mb-4">
                     <div className="text-3xl">{addon.icon}</div>
                     <div className="w-5 h-5 rounded-full flex items-center justify-center transition-all"
@@ -161,11 +117,9 @@ export default function AddonsPage() {
                     </div>
                   </div>
 
-                  {/* Nome */}
                   <h3 className="font-semibold text-sm mb-1.5" style={{ color: 'rgba(255,255,255,0.85)' }}>{addon.name}</h3>
                   <p className="text-xs mb-4 leading-relaxed" style={{ color: 'rgba(255,255,255,0.2)' }}>{addon.description}</p>
 
-                  {/* Features */}
                   <ul className="space-y-1.5 mb-5">
                     {addon.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-2 text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>
@@ -175,10 +129,8 @@ export default function AddonsPage() {
                     ))}
                   </ul>
 
-                  {/* Divisor */}
                   <div className="w-full h-px mb-4" style={{ background: 'rgba(255,255,255,0.04)' }} />
 
-                  {/* Preço */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-baseline gap-0.5">
                       <span className="text-xs" style={{ color: 'rgba(255,255,255,0.2)' }}>R$</span>
@@ -199,7 +151,6 @@ export default function AddonsPage() {
             })}
           </div>
 
-          {/* FAQ */}
           <div className="mt-20 max-w-3xl mx-auto">
             <h2 className="text-2xl font-bold text-center mb-8" style={{ color: 'rgba(255,255,255,0.8)' }}>Perguntas Frequentes</h2>
             <div className="grid gap-3">
@@ -223,7 +174,6 @@ export default function AddonsPage() {
         </div>
       </main>
 
-      {/* Carrinho flutuante */}
       {selectedAddons.length > 0 && (
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
           <div className="rounded-2xl px-6 py-4 flex items-center gap-6"
