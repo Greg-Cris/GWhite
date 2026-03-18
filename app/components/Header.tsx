@@ -68,7 +68,7 @@ export default function Header() {
     <header className={`fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-3 lg:px-12 z-50 transition-all duration-300 ${isScrolled ? "bg-black/90 backdrop-blur-md shadow-[0_4px_20px_rgba(0,80,0,0.4)]" : "bg-transparent"}`}>
       <Link href="/" className="flex items-center gap-3">
         <Image 
-          src="/wht-store-logo.png" 
+          src="/ChatGPT_Image_16_de_mar._de_2026_12_33_39.png" 
           alt="Wht-Store" 
           width={100} 
           height={64} 
