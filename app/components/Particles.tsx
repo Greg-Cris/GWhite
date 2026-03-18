@@ -44,6 +44,19 @@ const getParticles = (intensity: "light" | "medium" | "strong") => {
   return cache[intensity]
 }
 
+const PARTICLE_STYLES = `
+  @keyframes float-up {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 0.4; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+  }
+  @keyframes float-diagonal {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(30px, -30px); }
+  }
+`
+
 export default function Particles({ intensity = "medium" }: ParticlesProps) {
   const [isMounted, setIsMounted] = useState(false)
   useEffect(() => { setIsMounted(true) }, [])
@@ -54,18 +67,7 @@ export default function Particles({ intensity = "medium" }: ParticlesProps) {
 
   return (
     <>
-      <style jsx>{`
-        @keyframes float-up {
-          0% { transform: translateY(0); opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 0.4; }
-          100% { transform: translateY(-100vh); opacity: 0; }
-        }
-        @keyframes float-diagonal {
-          0%, 100% { transform: translate(0, 0); }
-          50% { transform: translate(30px, -30px); }
-        }
-      `}</style>
+      <style dangerouslySetInnerHTML={{ __html: PARTICLE_STYLES }} />
       <div className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
         {dots.map((p, i) => (
           <div key={`dot-${i}`} className="absolute rounded-full"
