@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Header from "@/app/components/Header"
-import Particles from "@/app/components/Particles"
 
 export default function LoginPage() {
   const [isLoadingLogin, setIsLoadingLogin] = useState(false)
@@ -18,8 +17,6 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-[#030a04] to-black text-white relative overflow-hidden">
 
-      <Particles intensity="light" />
-
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(34,197,94,0.04) 0%, transparent 60%)' }} />
 
@@ -27,7 +24,6 @@ export default function LoginPage() {
 
       <main className="flex items-center justify-center min-h-screen px-6 relative z-10 pt-20">
         <div className="w-full max-w-md">
-
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase"
               style={{ background: 'rgba(34,197,94,0.05)', border: '1px solid rgba(34,197,94,0.1)', color: 'rgba(134,239,172,0.5)' }}>
