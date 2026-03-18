@@ -1,14 +1,11 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
+import { useState } from "react"
 import Header from "@/app/components/Header"
+import Particles from "@/app/components/Particles"
 
 export default function LoginPage() {
   const [isLoadingLogin, setIsLoadingLogin] = useState(false)
-  const [isMounted, setIsMounted] = useState(false)
-
-  useEffect(() => { setIsMounted(true) }, [])
 
   const handleDiscordLogin = () => {
     setIsLoadingLogin(true)
@@ -21,45 +18,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-[#030a04] to-black text-white relative overflow-hidden">
 
-      {isMounted && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(40)].map((_, i) => (
-            <div key={`w-${i}`} className="absolute rounded-full"
-              style={{
-                backgroundColor: `rgba(255,255,255,${Math.random()*0.07+0.01})`,
-                width: `${Math.random()*2+1}px`, height: `${Math.random()*2+1}px`,
-                top: `${Math.random()*100}%`, left: `${Math.random()*100}%`,
-                animation: `float-up ${Math.random()*15+10}s infinite linear`,
-                animationDelay: `${Math.random()*10}s`,
-              }}
-            />
-          ))}
-          {[...Array(4)].map((_, i) => (
-            <div key={`orb-${i}`} className="absolute rounded-full blur-3xl"
-              style={{
-                backgroundColor: `rgba(34,197,94,0.04)`,
-                width: `${Math.random()*300+150}px`, height: `${Math.random()*300+150}px`,
-                top: `${Math.random()*100}%`, left: `${Math.random()*100}%`,
-                animation: `float-diagonal ${Math.random()*30+20}s infinite ease-in-out`,
-                animationDelay: `${Math.random()*10}s`,
-              }}
-            />
-          ))}
-        </div>
-      )}
-
-      <style jsx>{`
-        @keyframes float-up {
-          0% { transform: translateY(0); opacity: 0; }
-          10% { opacity: 0.5; }
-          90% { opacity: 0.2; }
-          100% { transform: translateY(-100vh); opacity: 0; }
-        }
-        @keyframes float-diagonal {
-          0%, 100% { transform: translate(0, 0); }
-          50% { transform: translate(30px, -30px); }
-        }
-      `}</style>
+      <Particles intensity="light" />
 
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(34,197,94,0.04) 0%, transparent 60%)' }} />
