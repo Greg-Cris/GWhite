@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { useEffect, useState, useMemo } from "react"
+import { useMemo } from "react"
 import Header from "@/app/components/Header"
 import Footer from "@/app/components/Footer"
 import Particles from "@/app/components/Particles"
@@ -55,8 +55,6 @@ const ServerCard = ({ server }: { server: any }) => {
 }
 
 export default function HomePage() {
-  const [isMounted, setIsMounted] = useState(false)
-
   const servers = [
     { id: 1, name: "Atentah Studio", icon: "🎨", iconBg: "from-green-900 to-green-950", members: "205", online: "20" },
     { id: 2, name: "💎 AeroTools Premium 💎", icon: "💎", iconBg: "from-green-800 to-green-950", members: "203", online: "20" },
@@ -65,8 +63,6 @@ export default function HomePage() {
     { id: 5, name: "VitinStore", icon: "🎮", iconBg: "from-green-800 to-green-950", members: "7.3K", online: "725" },
     { id: 6, name: "Suivex Community #5100", icon: "🦋", iconBg: "from-green-900 to-green-950", members: "5.0K", online: "502" },
   ]
-
-  useEffect(() => { setIsMounted(true) }, [])
 
   const handleDashboardClick = () => {
     const userData = localStorage.getItem('user')
