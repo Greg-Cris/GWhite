@@ -24,7 +24,7 @@ const ServerCard = ({ server }: { server: any }) => {
   const symbols = ['🎵', '🎶', '♪', '♫', '🎧', '🎤']
 
   return (
-    <div className="relative flex-shrink-0 w-80 bg-[#1a1a1a] border border-gray-700/50 rounded-xl p-3 hover:bg-[#252525] transition-all duration-200 cursor-pointer overflow-hidden">
+    <div className="relative flex-shrink-0 w-80 bg-[#0a1a0e] border border-green-900/50 rounded-xl p-3 hover:bg-[#0d2212] transition-all duration-200 cursor-pointer overflow-hidden">
       {/* Fundo animado com símbolos */}
       <div className="absolute inset-0 opacity-5 pointer-events-none overflow-hidden">
         {symbolPositions.map((pos, i) => (
@@ -69,17 +69,17 @@ export default function HomePage() {
   const [isMounted, setIsMounted] = useState(false)
   
   const servers = [
-    { id: 1, name: "Atentah Studio", icon: "🎨", iconBg: "from-gray-700 to-gray-900", members: "205", online: "20" },
-    { id: 2, name: "💎 AeroTools Premium 💎", icon: "💎", iconBg: "from-gray-600 to-gray-800", members: "203", online: "20" },
-    { id: 3, name: "BLACKOUT SHOP", icon: "🛍️", iconBg: "from-gray-800 to-black", members: "187", online: "18" },
-    { id: 4, name: "Legends Store | #8K", icon: "🏪", iconBg: "from-gray-700 to-black", members: "7.6K", online: "764" },
-    { id: 5, name: "VitinStore", icon: "🎮", iconBg: "from-gray-600 to-gray-900", members: "7.3K", online: "725" },
-    { id: 6, name: "Suivex Community #5100", icon: "🦋", iconBg: "from-gray-700 to-gray-950", members: "5.0K", online: "502" },
+    { id: 1, name: "Atentah Studio", icon: "🎨", iconBg: "from-green-900 to-green-950", members: "205", online: "20" },
+    { id: 2, name: "💎 AeroTools Premium 💎", icon: "💎", iconBg: "from-green-800 to-green-950", members: "203", online: "20" },
+    { id: 3, name: "BLACKOUT SHOP", icon: "🛍️", iconBg: "from-green-950 to-black", members: "187", online: "18" },
+    { id: 4, name: "Legends Store | #8K", icon: "🏪", iconBg: "from-green-900 to-black", members: "7.6K", online: "764" },
+    { id: 5, name: "VitinStore", icon: "🎮", iconBg: "from-green-800 to-green-950", members: "7.3K", online: "725" },
+    { id: 6, name: "Suivex Community #5100", icon: "🦋", iconBg: "from-green-900 to-green-950", members: "5.0K", online: "502" },
   ]
 
   // Gerar partículas apenas no cliente
   const particles = useMemo(() => {
-    if (!isMounted) return { white: [], orbs: [], gray: [], gold: [] }
+    if (!isMounted) return { white: [], orbs: [], gray: [], green: [] }
     
     return {
       white: Array.from({ length: 80 }, (_, i) => ({
@@ -97,7 +97,7 @@ export default function HomePage() {
         left: Math.random() * 100,
         duration: Math.random() * 18 + 15,
         delay: Math.random() * 6,
-        opacity: Math.random() * 0.5 + 0.2,
+        opacity: Math.random() * 0.4 + 0.1,
       })),
       gray: Array.from({ length: 40 }, () => ({
         size: Math.random() * 6 + 2,
@@ -105,16 +105,16 @@ export default function HomePage() {
         left: Math.random() * 100,
         duration: Math.random() * 16 + 12,
         delay: Math.random() * 10,
-        opacity: Math.random() * 0.6 + 0.2,
+        opacity: Math.random() * 0.4 + 0.1,
         blur: Math.random() * 0.8,
       })),
-      gold: Array.from({ length: 15 }, () => ({
+      green: Array.from({ length: 15 }, () => ({
         size: Math.random() * 4 + 2,
         top: Math.random() * 100,
         left: Math.random() * 100,
         duration: Math.random() * 20 + 15,
         delay: Math.random() * 8,
-        opacity: Math.random() * 0.4 + 0.2,
+        opacity: Math.random() * 0.5 + 0.2,
         blur: Math.random() * 1,
       })),
     }
@@ -134,8 +134,8 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-black text-white relative overflow-hidden">
-      {/* Partículas INTENSAS - apenas no cliente */}
+    <div className="min-h-screen bg-gradient-to-br from-black via-[#050f07] to-black text-white relative overflow-hidden">
+      {/* Partículas - apenas no cliente */}
       {isMounted && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Partículas brancas pequenas */}
@@ -144,7 +144,7 @@ export default function HomePage() {
               key={`white-${i}`}
               className="absolute rounded-full will-change-transform"
               style={{
-                backgroundColor: `rgba(255, 255, 255, ${p.opacity})`,
+                backgroundColor: `rgba(255, 255, 255, ${p.opacity * 0.3})`,
                 width: `${p.size}px`,
                 height: `${p.size}px`,
                 top: `${p.top}%`,
@@ -156,13 +156,13 @@ export default function HomePage() {
             />
           ))}
           
-          {/* Orbs GRANDES */}
+          {/* Orbs verdes grandes */}
           {particles.orbs.map((p, i) => (
             <div
               key={`orb-${i}`}
               className="absolute rounded-full blur-lg will-change-transform"
               style={{
-                backgroundColor: `rgba(255, 255, 255, ${p.opacity})`,
+                backgroundColor: `rgba(34, 197, 94, ${p.opacity})`,
                 width: `${p.size}px`,
                 height: `${p.size}px`,
                 top: `${p.top}%`,
@@ -179,7 +179,7 @@ export default function HomePage() {
               key={`gray-${i}`}
               className="absolute rounded-full will-change-transform"
               style={{
-                backgroundColor: `rgba(200, 200, 200, ${p.opacity})`,
+                backgroundColor: `rgba(134, 239, 172, ${p.opacity})`,
                 width: `${p.size}px`,
                 height: `${p.size}px`,
                 top: `${p.top}%`,
@@ -191,13 +191,13 @@ export default function HomePage() {
             />
           ))}
           
-          {/* Partículas douradas */}
-          {particles.gold.map((p, i) => (
+          {/* Partículas verdes neon */}
+          {particles.green.map((p, i) => (
             <div
-              key={`gold-${i}`}
+              key={`green-${i}`}
               className="absolute rounded-full will-change-transform"
               style={{
-                backgroundColor: `rgba(217, 164, 65, ${p.opacity})`,
+                backgroundColor: `rgba(74, 222, 128, ${p.opacity})`,
                 width: `${p.size}px`,
                 height: `${p.size}px`,
                 top: `${p.top}%`,
@@ -245,10 +245,14 @@ export default function HomePage() {
         
         .carousel-container:hover .carousel-track { animation-play-state: paused; }
         .carousel-track { animation: scroll 20s linear infinite; display: flex; }
+
+        .neon-text {
+          text-shadow: 0 0 20px rgba(74, 222, 128, 0.5), 0 0 40px rgba(74, 222, 128, 0.3);
+        }
       `}</style>
 
-      {/* Overlay de gradiente sutil */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-transparent to-white/5 pointer-events-none" />
+      {/* Overlay de gradiente sutil verde */}
+      <div className="absolute inset-0 bg-gradient-to-r from-green-950/10 via-transparent to-green-950/10 pointer-events-none" />
 
       {/* Header Global */}
       <Header />
@@ -260,16 +264,16 @@ export default function HomePage() {
             <div className="relative inline-block">
               <div className="absolute -top-12 left-0 transform -translate-x-2 -rotate-12 scale-x-[-1]">
                 <span className="text-2xl" style={{ animation: "natural-blink 4s infinite ease-in-out" }}>
-                  👑
+                  🐺
                 </span>
               </div>
-              <span className="text-white font-bold tracking-wide">G-White Apps</span>
+              <span className="text-green-400 font-bold tracking-wide neon-text">Wht-Store</span>
             </div>
           </h1>
-          <h2 className="text-3xl lg:text-4xl font-bold mb-8 text-gray-300">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-8 text-green-100/80">
             Seu futuro Bot está aqui.
           </h2>
-          <div className="text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed space-y-0">
+          <div className="text-xl text-green-200/50 mb-12 max-w-3xl mx-auto leading-relaxed space-y-0">
             <p className="text-balance">Eleve seu servidor Discord a um novo patamar com nossa tecnologia avançada.</p>
             <p className="text-balance">Automatize processos, melhore a experiência dos membros e simplifique a gestão.</p>
             <p className="text-balance">Transforme ideias em realidade com ferramentas poderosas e intuitivas.</p>
@@ -277,12 +281,12 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button
               onClick={handleDashboardClick}
-              className="bg-gradient-to-br from-amber-600 to-amber-800 hover:from-amber-700 hover:to-amber-900 text-white px-8 py-4 text-lg rounded-lg font-bold shadow-xl transform hover:scale-105 transition-all duration-200"
+              className="bg-gradient-to-br from-green-600 to-green-800 hover:from-green-500 hover:to-green-700 text-white px-8 py-4 text-lg rounded-lg font-bold shadow-xl shadow-green-900/50 transform hover:scale-105 transition-all duration-200"
             >
               Ir para a Dashboard →
             </Button>
             <Link href="/planos">
-              <Button className="bg-transparent hover:bg-white/10 text-white border-2 border-white/30 hover:border-white/50 px-8 py-4 text-lg rounded-lg font-semibold transform hover:scale-105 transition-all duration-200">
+              <Button className="bg-transparent hover:bg-green-900/20 text-white border-2 border-green-800/50 hover:border-green-600/70 px-8 py-4 text-lg rounded-lg font-semibold transform hover:scale-105 transition-all duration-200">
                 Ver Planos
               </Button>
             </Link>
@@ -294,7 +298,7 @@ export default function HomePage() {
       <section className="relative z-10 py-16 overflow-hidden">
         <div className="text-center mb-12 px-6">
           <h2 className="text-4xl font-bold mb-4 text-white">Nossos Clientes</h2>
-          <p className="text-gray-400 text-base">
+          <p className="text-green-200/50 text-base">
             Explore as melhores comunidades do Discord e conecte-se com milhares de pessoas que compartilham seus interesses.
           </p>
         </div>
