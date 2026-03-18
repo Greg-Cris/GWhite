@@ -70,9 +70,9 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-[#050f07] to-black text-white relative overflow-hidden">
+    <div className="min-h-screen text-white relative" style={{ zIndex: 1 }}>
 
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         @keyframes natural-blink {
           0%, 85% { opacity: 1; }
           90%, 95% { opacity: 0.3; }
@@ -90,7 +90,7 @@ export default function HomePage() {
         }
         .carousel-container:hover .carousel-track { animation-play-state: paused; }
         .carousel-track { animation: scroll 20s linear infinite; display: flex; }
-      `}</style>
+      `}} />
 
       <div className="absolute inset-0 bg-gradient-to-r from-green-950/10 via-transparent to-green-950/10 pointer-events-none" />
 
