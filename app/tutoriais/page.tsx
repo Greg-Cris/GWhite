@@ -38,12 +38,12 @@ export default function TutorialsPage() {
   })
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-[#030a04] to-black text-white relative overflow-hidden">
+    <div className="min-h-screen text-white relative" style={{ zIndex: 1 }}>
 
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .card-hover:hover { transform: translateY(-8px); border-color: rgba(34,197,94,0.2) !important; box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 40px rgba(34,197,94,0.05); }
-      `}</style>
+      `}} />
 
       <Header />
 
