@@ -7,13 +7,13 @@ import Header from "@/app/components/Header"
 import Footer from "@/app/components/Footer"
 
 export default function AddonsPage() {
-  const [selectedAddons, setSelectedAddons] = useState<number[]>([])
-  const [hoveredAddon, setHoveredAddon] = useState<number | null>(null)
+  const [selectedAddons, setSelectedAddons] = useState([])
+  const [hoveredAddon, setHoveredAddon] = useState(null)
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => { setIsMounted(true) }, [])
 
-  const toggleAddon = (id: number) => {
+  const toggleAddon = (id) => {
     setSelectedAddons(prev =>
       prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
     )
