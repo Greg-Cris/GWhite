@@ -73,7 +73,7 @@ export default function Header() {
             width: '120px',
             height: '120px',
             position: 'absolute',
-            top: '-30px',
+            top: '-10px',
             left: '0',
           }}
         />
